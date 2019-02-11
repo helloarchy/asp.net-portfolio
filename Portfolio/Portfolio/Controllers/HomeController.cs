@@ -26,7 +26,7 @@ namespace Portfolio.Controllers
             {
                 ProjectItems = await _context.ProjectItem.ToListAsync()
             };
-            return View(projects);
+            return View(await _context.ProjectItem.ToListAsync());
         }
 
         
@@ -35,6 +35,7 @@ namespace Portfolio.Controllers
             return View();
         }
 
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

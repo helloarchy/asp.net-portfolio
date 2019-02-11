@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Portfolio.Models;
 
 namespace Portfolio.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly PortfolioContext _context;
+
+        public HomeController(PortfolioContext context)
         {
-            return View();
+            _context = context;
         }
 
+        
+        public async Task<IActionResult> Index()
+        {
+            var projects = new ProjectGalleryViewModel
+            {
+                ProjectItems = await _context.ProjectItem.ToListAsync()
+            };
+            return View(projects);
+        }
+
+        
         public IActionResult Privacy()
         {
             return View();

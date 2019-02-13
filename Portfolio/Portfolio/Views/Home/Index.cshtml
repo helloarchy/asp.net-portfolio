@@ -2,10 +2,18 @@
     ViewData["Title"] = "Projects";
 }
 
-<h1 class="text-dark">Projects</h1>
 <div class="container-fluid">
-    @foreach (ProjectItem project in Model)
-    {
-        <partial name="ProjectItemPartial" model="@project"/>
-    }
+    <div class="row">
+        <h1 class="text-dark">Projects</h1>
+    </div>
+    <div class="card-columns">
+        @foreach (ProjectItem project in Model)
+        {
+            if (project.IsVisible)
+            {
+                // <partial name="ProjectItemPartial" model="@project"/>
+                @Html.Partial("ProjectItemPartial", project)
+            }
+        }
+    </div>
 </div>

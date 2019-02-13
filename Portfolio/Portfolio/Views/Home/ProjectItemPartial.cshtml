@@ -1,0 +1,17 @@
+@* Partial view for each individual project item on the home page. *@
+@model ProjectItem
+<div class="card">
+    <img class="card-img-top" src="@Model.ThumbnailImage">
+    <div class="card-body">
+        <h2 class="card-title">@Model.Name</h2>
+        <p class="card-text">@Model.ShortDescription</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Language</li>
+        <li class="list-group-item">Buzz words</li>
+    </ul>
+    <div class="card-body">
+        <a href="#" class="card-link">Repository</a>
+        <a href="#" class="card-link">More info</a>
+    </div>
+</div>

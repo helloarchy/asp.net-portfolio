@@ -1,9 +1,8 @@
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using Portfolio.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Portfolio.Models;
 
 namespace Portfolio.Data
 {
@@ -12,79 +11,93 @@ namespace Portfolio.Data
         public static async Task SeedDatabase(PortfolioContext context)
         {
             context.Database.EnsureCreated();
-            
-            /* SuperTappyPacket */
-            var name = "SuperTappyPacket";
-            await CreateProjectItem(context, name, name.Normalize(), 
+
+            /* Super Tappy Packet */
+            var name = "Super Tappy Packet";
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A Maltesers themed JavaScript game " +
-                      "based on FlappyBird, built using the Phaser.js engine.");
-            
+                      "based on Flappy Bird, built using the Phaser.js engine.",
+                "JavaScript", "Phaser.js, Game, " +
+                              "Web application, Responsive, Physics");
+
             /* Workings */
             name = "Workings";
-            await CreateProjectItem(context, name, name.Normalize(), 
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A web app for a soft furnishings " +
                       "company. Used to calculate fabric requirements and " +
-                      "manufacturing dimensions.");
-            
+                      "manufacturing dimensions.", "JavaScript",
+                "Responsive, Print Friendly, Freelance work, Forms");
+
             /* Decider */
             name = "Decider";
-            await CreateProjectItem(context, name, name.Normalize(), 
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A (first attempt) web app for decision " +
                       "making. Add multiple choices and one will be picked at " +
-                      "random.");
+                      "random.", "JavaScript", "Front end, " +
+                                               "CSS Flexbox, Responsive");
+
             
-            /* Decider 2.0 */
             name = "Decider 2.0";
-            await CreateProjectItem(context, name, name.Normalize(), 
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A (revised) web app for decision making. " +
                       "With shortlists and reject lists to help pin down the " +
-                      "desired choice.");
-            
+                      "desired choice.", "TypeScript",
+                "CSS Grid, Web Application, Front End, Responsive");
+
             /* CT Head */
             name = "CT Head";
-            await CreateProjectItem(context, name, name.Normalize(), 
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A GUI interface and application for viewing" +
-                      "CT scan data, with image creation and processing on the fly.");
-            
+                      " scan data from the Visible Human Project, with image " +
+                      "creation and processing on the fly.", "Java",
+                "Graphics, Image generating, Image processing, Image " +
+                "resizing algorithms, Dataset, JavaFX, FXML, GUI");
+
             /* Dot Net Core Blog Site */
-            name = "DotNet Blog";
-            await CreateProjectItem(context, name, name.Normalize(), 
-                true, "A web app blog built using ASP.NET Core " +
-                      "2.1 MVC.");
-            
+            name = "ASP.NET Blog";
+            await CreateProjectItem(context, name, name.Normalize(),
+                true, "A web application blog built using ASP.NET Core " +
+                      "2.1 MVC.", "C#",
+                ".NET Core, Framework, MVC, Razor Pages, Entity Framework, " +
+                "MSSQL Database, Security, Role and Claim based authorisation");
+
             /* Java Concurrency */
-            name = "Java Concurrency";
-            await CreateProjectItem(context, name, name.Normalize(), 
+            name = "Java Multithreading & Concurrency";
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A concurrent system where random numbers " +
-                      "are generated and sorted into text files by their multiple.");
-            
+                      "are generated and sorted into text files by their multiple.",
+                "Java", "Multithreading, Concurrency");
+
             /* Haskell Concurrency */
-            name = "Haskell Concurency";
-            await CreateProjectItem(context, name, name.Normalize(), 
+            name = "Haskell Multithreading & Concurrency";
+            await CreateProjectItem(context, name, name.Normalize(),
                 true, "A simple trading shop where threads" +
-                      " track customers, items, and coins.");
+                      " track customers, items, and coins.", 
+                "Haskell", "Multithreading, " +
+                           "Concurrency, Functional Programming");
+
             
         }
 
 
         private static async Task CreateProjectItem(PortfolioContext context,
             string name, string nameNormalised, bool isVisible,
-            string shortDescription, string thumbnailImage = null)
+            string shortDescription, string programmingLanguages, string keyWords,
+            string thumbnailImage = null)
         {
-            /*if (context.ProjectItem.Any(pi => pi.NameNormalised == nameNormalised))*/
-            ProjectItem projectItem = await context.ProjectItem
-                .FirstOrDefaultAsync(m => m.NameNormalised == nameNormalised);
-            if (projectItem == null)
+            if (!context.ProjectItem.Any(pi => pi.NameNormalised == nameNormalised))
             {
+                await context.SaveChangesAsync();
                 context.Add(new ProjectItem
                 {
+                    ThumbnailImage = thumbnailImage,
                     Name = name,
                     NameNormalised = nameNormalised,
-                    IsVisible = isVisible,
                     ShortDescription = shortDescription,
-                    ThumbnailImage = thumbnailImage
+                    ProgrammingLanguages = programmingLanguages,
+                    KeyWords = keyWords,
+                    IsVisible = isVisible
                 });
-                await context.SaveChangesAsync();
             }
         }
     }

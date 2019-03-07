@@ -36,7 +36,16 @@ namespace Portfolio.Data
                       "random.", "JavaScript", "Front end, " +
                                                "CSS Flexbox, Responsive");
 
+            /* Java Social Network */
+            name = "Java Social Network";
+            await CreateProjectItem(context, name, name.Normalize(),
+                true, "A simple commandline social network," +
+                      " making use of various abstract data types.",
+                "Java", "Recursion, Binary Search " +
+                        "Trees, Graphs", 
+                "/img/thumb/SocialNetwork.png");
             
+            /* Decider 2.0 */
             name = "Decider 2.0";
             await CreateProjectItem(context, name, name.Normalize(),
                 true, "A (revised) web app for decision making. " +
@@ -75,8 +84,6 @@ namespace Portfolio.Data
                       " track customers, items, and coins.", 
                 "Haskell", "Multithreading, " +
                            "Concurrency, Functional Programming");
-
-            
         }
 
 

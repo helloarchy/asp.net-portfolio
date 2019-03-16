@@ -18,7 +18,8 @@ namespace Portfolio.Data
                 true, "A Maltesers themed JavaScript game " +
                       "based on Flappy Bird, built using the Phaser.js engine.",
                 "JavaScript", "Phaser.js, Game, " +
-                              "Web application, Responsive, Physics");
+                              "Web application, Responsive, Physics",
+                "/img/thumb/SocialNetwork.png");
 
             /* Workings */
             name = "Workings";
@@ -26,7 +27,8 @@ namespace Portfolio.Data
                 true, "A web app for a soft furnishings " +
                       "company. Used to calculate fabric requirements and " +
                       "manufacturing dimensions.", "JavaScript",
-                "Responsive, Print Friendly, Freelance work, Forms");
+                "Responsive, Print Friendly, Freelance work, Forms",
+                "/img/thumb/SocialNetwork.png");
 
             /* Decider */
             name = "Decider";
@@ -34,7 +36,8 @@ namespace Portfolio.Data
                 true, "A (first attempt) web app for decision " +
                       "making. Add multiple choices and one will be picked at " +
                       "random.", "JavaScript", "Front end, " +
-                                               "CSS Flexbox, Responsive");
+                                               "CSS Flexbox, Responsive",
+                "/img/thumb/SocialNetwork.png");
 
             /* Java Social Network */
             name = "Java Social Network";
@@ -51,7 +54,8 @@ namespace Portfolio.Data
                 true, "A (revised) web app for decision making. " +
                       "With shortlists and reject lists to help pin down the " +
                       "desired choice.", "TypeScript",
-                "CSS Grid, Web Application, Front End, Responsive");
+                "CSS Grid, Web Application, Front End, Responsive",
+                "/img/thumb/SocialNetwork.png");
 
             /* CT Head */
             name = "CT Head";
@@ -60,7 +64,8 @@ namespace Portfolio.Data
                       " scan data from the Visible Human Project, with image " +
                       "creation and processing on the fly.", "Java",
                 "Graphics, Image generating, Image processing, Image " +
-                "resizing algorithms, Dataset, JavaFX, FXML, GUI");
+                "resizing algorithms, Dataset, JavaFX, FXML, GUI",
+                "/img/thumb/SocialNetwork.png");
 
             /* Dot Net Core Blog Site */
             name = "ASP.NET Blog";
@@ -68,14 +73,16 @@ namespace Portfolio.Data
                 true, "A web application blog built using ASP.NET Core " +
                       "2.1 MVC.", "C#",
                 ".NET Core, Framework, MVC, Razor Pages, Entity Framework, " +
-                "MSSQL Database, Security, Role and Claim based authorisation");
+                "MSSQL Database, Security, Role and Claim based authorisation",
+                "/img/thumb/SocialNetwork.png");
 
             /* Java Concurrency */
             name = "Java Multithreading & Concurrency";
             await CreateProjectItem(context, name, name.Normalize(),
                 true, "A concurrent system where random numbers " +
                       "are generated and sorted into text files by their multiple.",
-                "Java", "Multithreading, Concurrency");
+                "Java", "Multithreading, Concurrency",
+                "/img/thumb/SocialNetwork.png");
 
             /* Haskell Concurrency */
             name = "Haskell Multithreading & Concurrency";
@@ -83,7 +90,8 @@ namespace Portfolio.Data
                 true, "A simple trading shop where threads" +
                       " track customers, items, and coins.", 
                 "Haskell", "Multithreading, " +
-                           "Concurrency, Functional Programming");
+                           "Concurrency, Functional Programming",
+                "/img/thumb/SocialNetwork.png");
         }
 
 

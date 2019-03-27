@@ -29,6 +29,12 @@ namespace Portfolio.Controllers
             return View(await _context.ProjectItem.ToListAsync());
         }
 
+
+        public IActionResult CV()
+        {
+            return View();
+        }
+
         
         public IActionResult Privacy()
         {
